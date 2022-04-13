@@ -3,12 +3,13 @@ import React, { useState } from 'react'
 import { Video } from 'expo-av'
 import Layout from '../../components/Layout';
 const { width, height } = Dimensions.get("screen");
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 const Video2 = () => {
 
     const video = React.useRef(null);
     const [loadComponent, setLoadComponent] = useState<boolean>(false)
-
+    const { navigate }: any = useNavigation();
     useFocusEffect(() => {
         setLoadComponent(true)
         return () => {
@@ -17,7 +18,14 @@ const Video2 = () => {
     })
     return (
         <Layout>
+            <View style={{ position: "absolute", flexDirection: "row", justifyContent: "space-between", width: "100%", zIndex: 122222 }}>
+                <TouchableOpacity onPress={() => {
+                    navigate("video3min")
+                }}>
+                    <AntDesign name="caretleft" size={50} color="black" />
+                </TouchableOpacity>
 
+            </View>
             {loadComponent && <View style={{ justifyContent: "center", alignItems: "center" }}>
 
                 <Video

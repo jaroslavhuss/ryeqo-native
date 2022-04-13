@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dimensions, View, StyleSheet, ImageBackground, TouchableOpacity, Text } from 'react-native'
 type dim = {
     width: number,
     height: number
 }
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+
 const Layout = ({ children }: any) => {
     const { navigate } = useNavigation()
     const { width, height }: dim = Dimensions.get("window");
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
-
+    const { name } = useRoute();
+    useEffect(() => {
+        if (name === "mechanismus-ucinku/relugolix") {
+            setIsMenuOpened(true)
+        }
+    }, [])
     const Menu = () => (
         <View style={{ zIndex: 3003030, height, width: width / 5, backgroundColor: "purple" }}>
             <Text>{"\n"}</Text>
@@ -33,29 +39,38 @@ const Layout = ({ children }: any) => {
                 <Text style={styles.menuItem}>Menstruační{"\n"}krvácení</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => {  //@ts-ignore
+            <TouchableOpacity onPress={() => {
+                setIsMenuOpened(false)
+                //@ts-ignore
                 navigate("bolest")
             }}>
                 <Text style={styles.menuItem}>Bolest</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => {  //@ts-ignore
+            <TouchableOpacity onPress={() => {
+                setIsMenuOpened(false)
+                //@ts-ignore
                 navigate("bezpecnost/nezadouciPrihody")
             }}>
                 <Text style={styles.menuItem}>Bezpečnost</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {  //@ts-ignore
+            <TouchableOpacity onPress={() => {
+                setIsMenuOpened(false)
+                //@ts-ignore
                 navigate("qol")
             }}>
                 <Text style={styles.menuItem}>QoL</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {  //@ts-ignore
+            <TouchableOpacity onPress={() => {
+                setIsMenuOpened(false)
+                //@ts-ignore
                 navigate("doporucenePostupy")
             }}>
                 <Text style={styles.menuItem}>Doporučené{"\n"}postupy</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => {
+                setIsMenuOpened(false)
                 //@ts-ignore
                 navigate("spc")
             }}>
@@ -64,11 +79,11 @@ const Layout = ({ children }: any) => {
             <TouchableOpacity style={{
                 position: "absolute",
                 bottom: 0,
-                left: "35%"
+                left: "40%"
             }} onPress={() => {
                 setIsMenuOpened(!isMenuOpened)
             }}>
-                <AntDesign name="closecircleo" size={60} color="white" />
+                <AntDesign name="closecircleo" size={44} color="white" />
             </TouchableOpacity>
 
         </View>
@@ -80,12 +95,15 @@ const Layout = ({ children }: any) => {
                 <TouchableOpacity style={{
                     position: "absolute",
                     bottom: 0,
-                    margin: 5,
-                    marginLeft: 65
+
+                    marginLeft: 75,
+                    marginBottom: 5,
+                    backgroundColor: "pink",
+                    borderRadius: 12
                 }} onPress={() => {
                     setIsMenuOpened(!isMenuOpened)
                 }}>
-                    <Entypo name="air" size={44} color="grey" />
+                    <Entypo name="menu" size={44} color="white" />
                 </TouchableOpacity>
 
             }
