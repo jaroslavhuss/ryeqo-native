@@ -18,16 +18,16 @@ const Video1 = () => {
     })
     return (
         <Layout>
-            <View style={{ position: "absolute", flexDirection: "row", justifyContent: "space-between", width: "100%", zIndex: 122222 }}>
+            <View style={{ position: "relative", width: "100%", zIndex: 122222, flexDirection: "row", justifyContent: "space-between" }}>
                 <TouchableOpacity onPress={() => {
                     navigate("mechanismus-ucinku/relugolix")
                 }}>
                     <AntDesign name="caretleft" size={50} color="black" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity style={{ justifyContent: "flex-end", alignContent: "flex-end" }} onPress={() => {
                     navigate("video5min")
                 }}>
-                    <AntDesign name="caretright" size={50} color="black" />
+                    <AntDesign style={{ textAlign: "right", justifyContent: "flex-end", alignContent: "flex-end" }} name="caretright" size={50} color="black" />
                 </TouchableOpacity>
             </View>
 
@@ -51,8 +51,8 @@ export default Video1
 
 const styles = StyleSheet.create({
     video: {
-        width: width - 150,
-        height: height - 150,
+        width: width - 250,
+        height: height - 250,
         zIndex: 1,
         borderRadius: 12,
         shadowColor: "#000",

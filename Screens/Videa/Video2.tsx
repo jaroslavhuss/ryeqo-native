@@ -18,7 +18,7 @@ const Video2 = () => {
     })
     return (
         <Layout>
-            <View style={{ position: "absolute", flexDirection: "row", justifyContent: "space-between", width: "100%", zIndex: 122222 }}>
+            <View style={{ position: "absolute", flexDirection: "row", zIndex: 122222, top: 0 }}>
                 <TouchableOpacity onPress={() => {
                     navigate("video3min")
                 }}>
@@ -45,8 +45,9 @@ export default Video2
 
 const styles = StyleSheet.create({
     video: {
-        width: width - 150,
-        height: height - 150,
-        zIndex: 1
+        width: width - 250,
+        height: height - 250,
+        zIndex: 1000,
+
     },
 })
